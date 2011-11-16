@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Juris Mil</title> 
+   </head>
+  <body>  
+ 
+      <div data-role="page" id="juris" class="main" data-theme="a">
+          <script type="text/javascript">
+              $("#juris").live("pageshow",function(){
+                  $.mobile.showPageLoadingMsg();
+                  setTimeout(function(){
+                              loadJuris($.getUrlVar('link'));
+                  }, 300);
+              });
+          </script>
+          <div data-role="header" id="juris_head" data-theme="a" data-position="fixed">
+            <a id="juris_back" data-icon="arrow-l" data-direction="reverse">Indietro</a>
+            <h1 id="juris_head_h1"></h1>
+          </div>
+          <div data-role="content" id="juris_content">
+              <ul id="juris_menu" data-role="listview" data-inset="true" data-theme="c">
+              </ul>
+              <ul id="juris_feeds" class="newsList" data-role="listview">
+              </ul>
+              <p id="juris_error"></p>
+          </div>  
+          <div data-role="footer" data-id="myFooter" data-position="fixed" class="nav-h">
+              <div data-role="navbar" class="nav-h" data-grid="d">
+                  <ul>
+                      <li><a href="index.html" data-icon="custom" id="profilo"></a></li>
+                      <li><a href="servizi.html" data-icon="custom" id="servizi"></a></li>
+                      <li><a href="news.html" data-icon="custom" id="notizie"></a></li>
+                      <li><a href="banca.html" data-icon="custom" id="banca"></a></li>
+                      <li><a href="community.html" data-icon="custom" id="community"></a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>  
+  </body>  
+</html>  

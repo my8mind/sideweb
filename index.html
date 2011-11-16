@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Profilo</title>
+	<!-- iPad/Desktop specific css below, add after your main css >
+	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />
+    <link rel="stylesheet" media="screen and (min-width: 1025px)" href="desktop.css" type="text/css" />
+	-->
+    <link rel="apple-touch-icon" href="images/sidewebIcon.png" />
+    <link rel="apple-touch-startup-image" href="images/sidewebStartup.png" />
+	<link rel="stylesheet" href="css/jquery.mobile.css" type="text/css" />
+    <link rel="stylesheet" media="only screen and (max-width: 480px)" href="css/iphone.css" type="text/css" />
+    
+    <script type="text/javascript" src="js/phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/iphone.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.js"></script>
+    
+        
+    <script type='text/javascript' src="js/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+	// If you want to prevent dragging, uncomment this section
+	/*
+	function preventBehavior(e) 
+	{ 
+      e.preventDefault(); 
+    };
+	document.addEventListener("touchmove", preventBehavior, false);
+	*/
+	
+	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+	for more details -jm */
+	/*
+	function handleOpenURL(url)
+	{
+		// TODO: do something with the url passed in.
+	}
+	*/
+	
+	function onBodyLoad()
+	{		
+		document.addEventListener("deviceready",onDeviceReady,false);
+	}
+	
+	/* When this function is called, PhoneGap has been initialized and is ready to roll */
+	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+	for more details -jm */
+	function onDeviceReady()
+	{
+		// do your thing!
+		//navigator.notification.alert("PhoneGap is working");
+        $.mobile.page.prototype.options.backBtnTheme = "a";
+        window.localStorage.removeItem('feed');
+        document.addEventListener("resume", function(){window.localStorage.removeItem('feed');}, false);
+	}
+    </script>
+  </head>
+  <body onload="onBodyLoad()">
+      
+      <div data-role="page" id="index" class="main" data-theme="a">
+        <div data-role="header" data-theme="a" data-position="fixed">
+            <h1>Profilo</h1>
+        </div>
+        <div data-role="content">
+            <p id="centra"><img id="logo_big" src="images/logo_big.png" alt="Sideweb" /></p>
+            <ul data-role="listview" data-inset="true" data-theme="c">
+                <li><a href="about.html" title="Benvenuti">Benvenuti</a></li>
+                <li><a href="info.html" title="Informazione">Informazione</a></li>	
+                <li><a href="contatti.html" title="Contatti">Contatti</a></li>	
+            </ul>
+            <p>Per accedere agli altri servizi utilizza le icone del men&ugrave; sottostante.</p>
+        </div>
+        <div data-role="footer" data-id="myFooter" class="nav-h" data-position="fixed">
+            <div data-role="navbar" class="nav-h" data-grid="d">
+                <ul>
+                    <li><a href="index.html" data-icon="custom" id="profilo"></a></li>
+                    <li><a href="servizi.html" data-icon="custom" id="servizi"></a></li>
+                    <li><a href="news.html" data-icon="custom" id="notizie"></a></li>
+                    <li><a href="banca.html" data-icon="custom" id="banca"></a></li>
+                    <li><a href="community.html" data-icon="custom" id="community"></a></li>
+            </ul>
+        </div>
+    </div>
+  </body>
+</html>
