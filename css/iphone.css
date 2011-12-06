@@ -42,30 +42,30 @@ div.main{
 
 .ui-btn-up-a {
 	border: 1px solid 		#3F5F58;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#5E8D83), to(#6F9F95)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient(top, #5E8D83, #6F9F95); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient(top, #5E8D83, #6F9F95); /* FF3.6 */
-	background-image:     -ms-linear-gradient(top, #5E8D83, #6F9F95); /* IE10 */
-	background-image:      -o-linear-gradient(top, #5E8D83, #6F9F95); /* Opera 11.10+ */
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#5E8D83), to(#6F9F95)); 
+	background-image: -webkit-linear-gradient(top, #5E8D83, #6F9F95); 
+	background-image:    -moz-linear-gradient(top, #5E8D83, #6F9F95);
+	background-image:     -ms-linear-gradient(top, #5E8D83, #6F9F95); 
+	background-image:      -o-linear-gradient(top, #5E8D83, #6F9F95); 
 	background-image:         linear-gradient(top, #5E8D83, #6F9F95);
 }
 .ui-btn-down-a {
 	border: 1px solid 		#35504A;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#547D74), to(#7EA9A0)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient(top, #547D74, #7EA9A0); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient(top, #547D74, #7EA9A0); /* FF3.6 */
-	background-image:     -ms-linear-gradient(top, #547D74, #7EA9A0); /* IE10 */
-	background-image:      -o-linear-gradient(top, #547D74, #7EA9A0); /* Opera 11.10+ */
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#547D74), to(#7EA9A0));
+	background-image: -webkit-linear-gradient(top, #547D74, #7EA9A0); 
+	background-image:    -moz-linear-gradient(top, #547D74, #7EA9A0);
+	background-image:     -ms-linear-gradient(top, #547D74, #7EA9A0);
+	background-image:      -o-linear-gradient(top, #547D74, #7EA9A0); 
 	background-image:         linear-gradient(top, #547D74, #7EA9A0);
     
 }
 .ui-btn-hover-a {
 	border: 1px solid 		#35504A;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#7EA9A0), to(#6F9F95)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient(top, #5E8D83, #6F9F95); /* Chrome 10+, Saf5.1+ */
-	background-image:    -moz-linear-gradient(top, #5E8D83, #6F9F95); /* FF3.6 */
-	background-image:     -ms-linear-gradient(top, #5E8D83, #6F9F95); /* IE10 */
-	background-image:      -o-linear-gradient(top, #5E8D83, #6F9F95); /* Opera 11.10+ */
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#7EA9A0), to(#6F9F95)); 
+	background-image: -webkit-linear-gradient(top, #5E8D83, #6F9F95); 
+	background-image:    -moz-linear-gradient(top, #5E8D83, #6F9F95); 
+	background-image:     -ms-linear-gradient(top, #5E8D83, #6F9F95); 
+	background-image:      -o-linear-gradient(top, #5E8D83, #6F9F95); 
 	background-image:         linear-gradient(top, #5E8D83, #6F9F95);
 }
 
