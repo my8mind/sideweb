@@ -2,7 +2,7 @@
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
 	id		= "it.sideweb.forzearmate"
-	version 	= "1.0.2">
+	version 	= "1.0.3">
 
 	<name>ForzeArmate</name>
 
@@ -21,8 +21,6 @@
 		<gap:platform name="symbian.wrt" />
 		<gap:platform name="blackberry" project="widgets"/>
 	</gap:platforms>
-	
-	<preference name="stay-in-webview" value="false" />
 
 	<icon src="images/icons/icon.png" width="57" height="57" />
 	<icon src="images/icons/icon-29.png" width="29" height="29" />
