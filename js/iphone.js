@@ -85,7 +85,7 @@ function loadArticle(idArt){
         //url = 'http://giove.hsgroup.net:8080/test/tmp/article.php?origLink='+idArt;
         url = 'http://www.forzearmate.org/app/article.php?origLink='+idArt;
         var markupText = '<h2>${title}</h2><p class="first">{{html description}}</p>'
-        var markupLink = '<li><a href="${link}" targer="_blank">Leggi su Sideweb.it</a></li>';      
+        var markupLink = '<li><a href="${link}" target="_blank">Leggi su Sideweb.it</a></li>';      
         $.template("artTmpl",markupText);
         $.template("linkTmpl",markupLink);
         
