@@ -137,6 +137,12 @@ ul.testo{
     clear:both;
 }
 
+p.dida{
+    font-style:italic;
+    font-size:80%;
+    margin-top : 0;
+}
+
 /* IMMAGINI */
 .ui-body-a img#logo{
     float:right;
@@ -164,6 +170,12 @@ ul.testo{
 li.newsItem { 
     font-size: 80%;
     line-height: 150%;
+}
+
+li.thread {
+    margin: 4px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px; 
 }
 
 span.small{

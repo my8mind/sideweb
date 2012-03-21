@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+            <title>Radio Naja</title> 
+    </head>
+    <body>  
+        <div data-role="page" id="message" class="main" data-theme="a" data-add-back-btn="true" data-back-btn-text="Radio Naja">  
+            <script type="text/javascript">
+                $("#message").bind("pagecreate",function(){
+                    setTimeout(function(){
+                            $.mobile.showPageLoadingMsg();
+                            loadMessage($.getUrlVar('id'),$.getUrlVar('rif'));
+                    }, 100);
+                });
+            </script>
+            <div data-role="header" data-theme="a" data-position="fixed">
+                <h1>Messaggio</h1>
+            </div>
+            <div id="content" data-role="content">  
+                <ul id="thread" class="newsList" data-role="listview" data-theme="c">
+                </ul>
+                <br />
+                <ul data-role="listview" data-inset="true" data-theme="c" id="reply">
+                </ul>
+            </div>  
+            <div data-role="footer" data-id="myFooter" data-position="fixed" class="nav-h">
+                <div data-role="navbar" class="nav-h" data-grid="d">
+                    <ul>
+                        <li><a href="index.html" data-icon="custom" id="profilo"></a></li>
+                        <li><a href="servizi.html" data-icon="custom" id="servizi"></a></li>
+                        <li><a href="news.html" data-icon="custom" id="notizie"></a></li>
+                        <li><a href="banca.html" data-icon="custom" id="banca"></a></li>
+                        <li><a href="community.html" data-icon="custom" id="community"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>  
+    </body>  
+</html>  

@@ -10,7 +10,7 @@ $(document).bind("mobileinit", function(){
 $.extend({
     getUrlVars: function(){
          var vars = [], hash;
-         var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+         var hashes = window.location.href.slice(window.location.href.lastIndexOf('?') + 1).split('&');
          for(var i = 0; i < hashes.length; i++){
             hash = hashes[i].split('=');
             vars.push(hash[0]);
@@ -315,4 +315,147 @@ function stopWatch(){
     }
   }catch(e){}
 }
+
+
+function loadMessages(){
+    if(window.localStorage.getItem("msgs") == undefined)
+        remoteLoadMsgs();
+    else
+        buildMsgs(JSON.parse(window.localStorage.getItem("msgs")));
+};
+
+function buildMsgs(data,limit){
+    if(limit == null)
+        limit = 100;
+    else
+        limit = limit + 100;
+    var markup = '<li class="newsItem thread"><a href="radio_1.html?id=${id_messaggio}&rif=${rif_id}">Inviato da ${nome} il <span class="small">${data_inser}</span><br />${testo_msg}</a></li>';
+    $.template("msgsTemplate",markup);
+    var newsList = $("#feeds");
+    newsList.empty();
+    $.tmpl("msgsTemplate",data).appendTo(newsList);
+    newsList.listview("refresh");
+    $('#link').empty();
+    $('<li data-icon="forward"><a onclick="remoteLoadMsgs('+limit+');">Mostra messaggi più vecchi</a></li>').appendTo('#link');
+    $('#link').listview("refresh");
+};
+
+function remoteLoadMsgs(limit){
+    if(limit == null)
+        limit = 100;
+    url = 'http://www.forzearmate.org/app/messages.php?limit='+limit;
+    //url = 'http://giove.hsgroup.net:8080/test/forzearmate/app/messages.php?limit='+limit;
+    $.mobile.showPageLoadingMsg();
+    jQuery.ajax({
+                type:"GET",
+                url: url,
+                dataType:"json",
+                success: function(data){
+                window.localStorage.setItem('msgs',JSON.stringify(data));
+                buildMsgs(data,limit);
+                $.mobile.hidePageLoadingMsg();
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                $.mobile.hidePageLoadingMsg();
+                try{
+                navigator.notification.alert("Impossibile comunicare con il server",function(){;},"Errore","Ok");
+                }
+                catch(e){
+                alert("Errore\r\nImpossibile comunicare con il server");
+                }
+                }
+                });
+};
+
+function loadMessage(id,rif){
+    $.mobile.showPageLoadingMsg();
+    if(id == undefined){
+        $.mobile.hidePageLoadingMsg();
+        try{
+            navigator.notification.alert("Impossibile caricare il messaggio richiesto",function(){;},"Errore","Ok");
+        }
+        catch(e){
+            alert("Errore\r\nImpossibile caricare il messaggio richiesto");
+        }
+    }
+    else {
+        var r_id = id;
+        if(rif > 0)
+            r_id = rif;
+        //url = 'http://giove.hsgroup.net:8080/test/forzearmate/app/message.php?id='+id+'&rif='+rif;
+        url = 'http://www.forzearmate.org/app/message.php?id='+id+'&rif='+rif;
+        
+        var markup = '<li class="newsItem thread">Inviato da ${nome} il <span class="small">${data_inser}</span><br />${testo}</a></li>';
+        $.template("msgsTemplate",markup);
+        jQuery.ajax({
+                    type:"GET",
+                    url: url,
+                    dataType:"json",
+                    success: function(data){
+                    var newsList = $("#thread");
+                    newsList.empty();
+                    $.tmpl("msgsTemplate",data).appendTo(newsList);
+                    newsList.listview("refresh");
+                    $('#reply').empty();
+                    $('<li data-icon="forward"><a href="radio_2.html?ref='+r_id+'">Rispondi</a></li>').appendTo('#reply');
+                    $('#reply').listview("refresh");
+                    $.mobile.hidePageLoadingMsg();	
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown){
+                    $.mobile.hidePageLoadingMsg();
+                    try{
+                    navigator.notification.alert("Impossibile comunicare con il server",function(){;},"Errore","Ok");
+                    }
+                    catch(e){
+                    alert("Errore\r\nImpossibile comunicare con il server");
+                    }
+                    }
+                    });
+    }
+};
+
+
+function postMessage(){
+    if($('#name').val() == ""){
+        try{
+            navigator.notification.alert("Inserire il proprio nome",function(){;},"Errore","Ok");
+        }
+        catch(e){
+            alert("Errore\r\nInserire il proprio nome");
+        }
+        return false;
+    }
+    if($('#testo').val() == ""){
+        try{
+            navigator.notification.alert("Inserire il testo del messaggio",function(){;},"Errore","Ok");
+        }
+        catch(e){
+            alert("Errore\r\nInserire il testo del messaggio");
+        }
+        return false;
+    }
+    //url = 'http://giove.hsgroup.net:8080/test/forzearmate/app/post_message.php';
+    url = 'http://www.forzearmate.org/app/post_message.php';
+    jQuery.ajax({
+        type:"POST",
+        url: url,
+        data: $('#msg_form').serialize(), 
+        success: function(data){
+            $.mobile.hidePageLoadingMsg();
+            window.localStorage.removeItem('msgs');
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            $.mobile.hidePageLoadingMsg();
+            try{
+                navigator.notification.alert("Impossibile comunicare con il server",function(){;},"Errore","Ok");
+            }
+            catch(e){
+                alert("Errore\r\nImpossibile comunicare con il server");
+            }
+        }
+    });
+    
+    $.mobile.changePage("radio.html",{transition:"slidedown"});
+    return false;
+};
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Notizie</title> 
+   </head>
+  <body>  
+ 
+      <div data-role="page" id="news" class="main" data-theme="a" data-add-back-btn="true" data-back-btn-text="Notizie">  
+          <script type="text/javascript">
+              $("#news").bind("pagecreate",function(){
+                  setTimeout(function(){
+                              //$.mobile.showPageLoadingMsg();
+                             loadNews();
+                  }, 100);
+              });
+              $("#news").bind("pageshow",startWatch());
+              $("#news").bind("pagehide",stopWatch());
+          </script>
+          <div data-role="header" data-theme="a" data-position="fixed">
+              <h1>Notizie</h1>
+              <a id="btnRefresh" onclick="remoteLoadNews();" class="ui-btn-right" data-icon="refresh">Ricarica</a>
+          </div>
+          <div data-role="content">  
+              <ul id="feeds" class="newsList" data-role="listview" data-theme="c">
+              </ul>
+          </div>  
+          <div data-role="footer" data-id="myFooter" data-position="fixed" class="nav-h">
+              <div data-role="navbar" class="nav-h" data-grid="d">
+                  <ul>
+                      <li><a href="index.html" data-icon="custom" id="profilo"></a></li>
+                      <li><a href="servizi.html" data-icon="custom" id="servizi"></a></li>
+                      <li><a href="news.html" data-icon="custom" id="notizie"></a></li>
+                      <li><a href="banca.html" data-icon="custom" id="banca"></a></li>
+                      <li><a href="community.html" data-icon="custom" id="community"></a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>  
+  </body>  
+</html>  

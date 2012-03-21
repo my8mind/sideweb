@@ -2,41 +2,43 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <title>Notizie</title> 
-   </head>
-  <body>  
- 
-      <div data-role="page" id="news" class="main" data-theme="a">  
-          <script type="text/javascript">
-              $("#news").bind("pagecreate",function(){
-                  setTimeout(function(){
-                              //$.mobile.showPageLoadingMsg();
-                             loadNews();
-                  }, 100);
-              });
-              $("#news").bind("pageshow",startWatch());
-              $("#news").bind("pagehide",stopWatch());
-          </script>
-          <div data-role="header" data-theme="a" data-position="fixed">
-              <h1>Notizie</h1>
-              <a id="btnRefresh" onclick="remoteLoadNews();" data-icon="refresh">Ricarica</a>
-          </div>
-          <div data-role="content">  
-              <ul id="feeds" class="newsList" data-role="listview" data-theme="c">
-              </ul>
-          </div>  
-          <div data-role="footer" data-id="myFooter" data-position="fixed" class="nav-h">
-              <div data-role="navbar" class="nav-h" data-grid="d">
-                  <ul>
-                      <li><a href="index.html" data-icon="custom" id="profilo"></a></li>
-                      <li><a href="servizi.html" data-icon="custom" id="servizi"></a></li>
-                      <li><a href="news.html" data-icon="custom" id="notizie"></a></li>
-                      <li><a href="banca.html" data-icon="custom" id="banca"></a></li>
-                      <li><a href="community.html" data-icon="custom" id="community"></a></li>
-                  </ul>
-              </div>
-          </div>
-      </div>  
-  </body>  
-</html>  
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>News</title>
+    </head>
+    
+    <body>
+        <div data-role="page" class="main" data-theme="a">
+            <div data-role="header" data-theme="a" data-position="fixed">
+                <h1>News</h1>
+            </div>
+            <div data-role="content">
+                <p>Notizie da forzearmate.org e fonti eterne:</p>
+                <ul data-role="listview" data-inset="true" data-theme="c">
+                    <li><a href="news_1.html" title="Notizie">Notizie da forzearmate.org</a></li>
+                    <li><a href="radio.html" title="Radio Naja">Radio Naja</a></li>
+                    <li><a href="http://www.corrieredellosport.it" target="_blank" title="Corriere dello Sport">Il Corriere dello Sport</a></li>
+                    <li><a href="http://www.ilsole24ore.com" target="_blank" title="Il Sole 24 Ore">Il Sole 24 Ore</a></li>
+                    <li><a href="http://www.lastampa.it" target="_blank" title="La Stampa">La Stampa</a></li>
+                    <li><a href="http://www.liberoquotidiano.it" target="_blank" title="Libero">Libero</a></li>
+                    <li><a href="http://www.ilmessaggero.it" target="_blank" title="Il Messaggero">Il Messaggero</a></li>
+                    <li><a href="http://www.ilfattoquotidiano.it" target="_blank" title="Il Fatto Quotidiano">Il Fatto Quotidiano</a></li>
+                    <li><a href="http://www.ilgiornale.it" target="_blank" title="Il Giornale">Il Giornale</a></li>
+                    <li><a href="http://www.lagazzettadelmezzogiorno.it" target="_blank" title="La Gazzetta del Mezzogiorno">La Gazzetta del Mezzogiorno</a></li>
+                    <li><a href="http://www.google.com/search?hl=it&gl=it&tbm=nws&btnmeta_news_search=1&q=militari" target="_blank" title="Militari su Google">Militari su Google</a></li>
+                    <li><a href="http://www.google.com/search?hl=it&gl=it&tbm=nws&btnmeta_news_search=1&q=forze+armate" target="_blank" title="Forze Armate su Google">Forze Armate su Google</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" data-id="myFooter" data-position="fixed" class="nav-h">
+                <div data-role="navbar" class="nav-h" data-grid="d">
+                    <ul>
+                        <li><a href="index.html" data-icon="custom" id="profilo"></a></li>
+                        <li><a href="servizi.html" data-icon="custom" id="servizi"></a></li>
+                        <li><a href="news.html" data-icon="custom" id="notizie"></a></li>
+                        <li><a href="banca.html" data-icon="custom" id="banca"></a></li>
+                        <li><a href="community.html" data-icon="custom" id="community"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

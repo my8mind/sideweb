@@ -60,7 +60,8 @@
 		//navigator.notification.alert("PhoneGap is working");
         $.mobile.page.prototype.options.backBtnTheme = "a";
         window.localStorage.removeItem('feed');
-        document.addEventListener("resume", function(){window.localStorage.removeItem('feed');}, false);
+        window.localStorage.removeItem('msgs');
+        document.addEventListener("resume", function(){window.localStorage.removeItem('feed');window.localStorage.removeItem('msgs');}, false);
 
     }
     </script>
@@ -76,7 +77,9 @@
             <ul data-role="listview" data-inset="true" data-theme="c">
                 <li><a href="about.html" title="Benvenuti">Benvenuti</a></li>
                 <li><a href="info.html" title="Informazione">Informazione</a></li>	
-                <li><a href="contatti.html" title="Contatti">Contatti</a></li>	
+                <li><a href="contatti.html" title="Contatti">Contatti</a></li>
+                <li><a href="radio.html" title="Radio Naja">Radio Naja</a></li>
+                <li><a href="indice.html" title="Indice">Indice Applicazione</a></li>
             </ul>
             <p>Per accedere agli altri servizi utilizza le icone del men&ugrave; sottostante.</p>
         </div>

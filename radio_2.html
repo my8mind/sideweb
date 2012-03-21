@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Radio Naja</title>
+  </head>
+  <body>
+      <div data-role="page" id="post_message" class="main" data-theme="a" data-add-back-btn="true" data-back-btn-text="Radio Naja">
+          <script type="text/javascript">
+              $("#post_message").bind("pagecreate",function(){
+                setTimeout(function(){
+                  $("#ref").val($.getUrlVar('ref'));
+                  $("textarea[maxlength]").keyup(function(){
+                    var max=parseInt($(this).attr('maxlength'));
+                    if($(this).val().length > max)
+                      $(this).val($(this).val().substr(0,$(this).attr('maxlenght')));
+                   });
+                }, 100);
+              });
+          </script>
+        <div data-role="header" data-theme="a" data-position="fixed">
+            <h1>Messaggio</h1>
+        </div>
+        <div data-role="content">
+            <p>Invia il tuo messaggio a Radio Naja</p>
+            <form id="msg_form">
+                <div data-role="fieldcontain">
+                    <label for="name" data-theme="c">Nome:</label>
+                    <input type="text" name="name" id="name" value="" data-theme="c" />
+                    <label for="testo" data-theme="c">Messaggio:</label>
+                    <textarea maxlength="250" name="testo" id="testo" value="" data-theme="c"></textarea>
+                    <input type="hidden" name="ref" id="ref" value="0" />
+                    <p class="dida">Lunghezza massima 250 caratteri</p>
+                    <p class="dida">Non sono consentiti messaggi con linguaggio offensivo, che contengono turpiloquio, con contenuto razzista o sessista, il cui contenuto violi le leggi italiane.</p>
+                </div>
+                <button type="submit" onclick="postMessage();return false;" data-theme="c">Invia</button>
+            </form>
+        </div>
+        <div data-role="footer" data-id="myFooter" class="nav-h" data-position="fixed">
+            <div data-role="navbar" class="nav-h" data-grid="d">
+                <ul>
+                    <li><a href="index.html" data-icon="custom" id="profilo"></a></li>
+                    <li><a href="servizi.html" data-icon="custom" id="servizi"></a></li>
+                    <li><a href="news.html" data-icon="custom" id="notizie"></a></li>
+                    <li><a href="banca.html" data-icon="custom" id="banca"></a></li>
+                    <li><a href="community.html" data-icon="custom" id="community"></a></li>
+            </ul>
+        </div>
+    </div>
+  </body>
+</html>
