@@ -329,7 +329,7 @@ function buildMsgs(data,limit){
         limit = 100;
     else
         limit = limit + 100;
-    var markup = '<li class="newsItem thread"><a href="radio_1.html?id=${id_messaggio}&rif=${rif_id}">Inviato da ${nome} il <span class="small">${data_inser}</span><br />${testo_msg}</a></li>';
+    var markup = '<li class="newsItem thread"><a href="radio_1.html?id=${id_messaggio}&rif=${rif_id}">Inviato da ${nome} il <span class="small">${data_inser}</span><br />${oggetto}<br />${testo_msg}</a></li>';
     $.template("msgsTemplate",markup);
     var newsList = $("#feeds");
     newsList.empty();
@@ -385,7 +385,7 @@ function loadMessage(id,rif){
         //url = 'http://giove.hsgroup.net:8080/test/forzearmate/app/message.php?id='+id+'&rif='+rif;
         url = 'http://www.forzearmate.org/app/message.php?id='+id+'&rif='+rif;
         
-        var markup = '<li class="newsItem thread">Inviato da ${nome} il <span class="small">${data_inser}</span><br />${testo}</a></li>';
+        var markup = '<li class="newsItem thread">Inviato da ${nome} il <span class="small">${data_inser}</span><br />${oggetto}<br />${testo}</a></li>';
         $.template("msgsTemplate",markup);
         jQuery.ajax({
                     type:"GET",
@@ -397,7 +397,7 @@ function loadMessage(id,rif){
                     $.tmpl("msgsTemplate",data).appendTo(newsList);
                     newsList.listview("refresh");
                     $('#reply').empty();
-                    $('<li data-icon="forward"><a href="radio_2.html?ref='+r_id+'">Rispondi</a></li>').appendTo('#reply');
+                    $('<li data-icon="forward"><a href="radio_2.html?ref='+r_id+'&oggetto='+data[0]['oggetto']+'">Rispondi</a></li>').appendTo('#reply');
                     $('#reply').listview("refresh");
                     $.mobile.hidePageLoadingMsg();	
                     },
@@ -422,6 +422,15 @@ function postMessage(){
         }
         catch(e){
             alert("Errore\r\nInserire il proprio nome");
+        }
+        return false;
+    }
+    if($('#obj').val() == ""){
+        try{
+            navigator.notification.alert("Inserire l'oggetto del messaggio",function(){;},"Errore","Ok");
+        }
+        catch(e){
+            alert("Errore\r\nInserire l'oggetto del messaggio");
         }
         return false;
     }
