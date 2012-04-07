@@ -2,8 +2,13 @@
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
 	id		= "it.sideweb.forzearmate"
+<<<<<<< HEAD
 	version 	= "1.5.1"
 	versionCode	= "78">
+=======
+	version 	= "1.5.2"
+    versionCode = "79">
+>>>>>>> Corretto bug oggetto Radio Naja
 
 	<name>ForzeArmate</name>
 

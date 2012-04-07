@@ -13,7 +13,7 @@
                   $("#ref").val($.getUrlVar('ref'));
                   if($.getUrlVar('ref') > 0){
                         $("#obj").attr("readonly", true);
-                        $("#obj").val($.getUrlVar('oggetto'));
+                        $("#obj").val(decodeURI($.getUrlVar('oggetto')));
                   }
                   $("textarea[maxlength]").keyup(function(){
                     var max=parseInt($(this).attr('maxlength'));
