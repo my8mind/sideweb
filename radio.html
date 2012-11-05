@@ -23,7 +23,12 @@
               <a id="btnRefresh" onclick="remoteLoadMsgs();" data-icon="refresh">Ricarica</a>
               <a id="btnAdd" href="radio_2.html?ref=0" data-role="button" data-icon="plus" data-iconpos="notext">Add></a>
           </div>
-          <div data-role="content">  
+          <div data-role="content">
+              <form name="ricerca" style="margin-bottom:2em">
+                  <input type="text" name="query" id="query" data-theme="c" data-mini="true" />
+                  <button type="submit" onclick="remoteLoadMsgs();return false;" data-icon="search" data-mini="true" data-theme="c">Cerca Messaggi</button>
+              </form>
+              
               <ul id="feeds" class="newsList" data-role="listview" data-theme="c">
               </ul>
               <br />

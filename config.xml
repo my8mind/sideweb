@@ -2,8 +2,7 @@
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
 	id		= "it.sideweb.forzearmate"
-	version 	= "1.5.3"
-	versionCode	= "80">
+	version 	= "1.6.0">
 
 	<name>ForzeArmate</name>
 
@@ -28,14 +27,18 @@
 	<icon src="images/icons/icon-36.png" width="36" height="36" />
 	<icon src="images/icons/icon-48.png" width="48" height="48" />
 	<icon src="images/icons/icon-72.png" width="72" height="72" />
-	<icon src="images/icons/icon@2x.png" width="114" height="114" />
 	<icon src="images/icons/icon-96.png" width="96" height="96" />
+    <icon src="images/icons/icon@2x.png" width="114" height="114" />
+	<icon src="images/icons/icon-72@2x.png" width="144" height="144" />
 	<icon src="images/icons/icon-512.png" width="512" height="512" />
 	
 	<gap:splash src="images/splash/Default.png" width="320" height="480" />
+    <gap:splash src="images/splash/Default-568h2x.png" width="640" height="1136" />
 	<gap:splash src="images/splash/Default@2x.png" width="640" height="960" />
 	<gap:splash src="images/splash/splash-768.png" width="768" height="1004" />
+    <gap:splash src="images/splash/splash-768@2x.png" width="1536" height="2008" />
 	<gap:splash src="images/splash/splash-1024.png" width="1024" height="748" />
+    <gap:splash src="images/splash/splash-1024@2x.png" width="2048" height="1496" />
 	
 	<feature name="http://api.phonegap.com/1.0/file"/>
 	<feature name="http://api.phonegap.com/1.0/app"/>

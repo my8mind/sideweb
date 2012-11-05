@@ -10,10 +10,11 @@
           <script type="text/javascript">
               $("#post_message").bind("pagecreate",function(){
                 setTimeout(function(){
+                           alert($.getUrlVar('ref'));
                   $("#ref").val($.getUrlVar('ref'));
                   if($.getUrlVar('ref') > 0){
                         $("#obj").attr("readonly", true);
-                        $("#obj").val(decodeURI($.getUrlVar('oggetto')));
+                        $("#obj").val(decodeURIComponent($.getUrlVar('oggetto')));
                   }
                   $("textarea[maxlength]").keyup(function(){
                     var max=parseInt($(this).attr('maxlength'));
@@ -35,9 +36,9 @@
                     <label for="obj" data-theme="c">Oggetto:</label>
                     <input type="text" name="obj" id="obj" value="" data-theme="c" />
                     <label for="testo" data-theme="c">Messaggio:</label>
-                    <textarea maxlength="250" name="testo" id="testo" value="" data-theme="c"></textarea>
+                    <textarea maxlength="500" name="testo" id="testo" value="" data-theme="c"></textarea>
                     <input type="hidden" name="ref" id="ref" value="0" />
-                    <p class="dida">Lunghezza massima 250 caratteri</p>
+                    <p class="dida">Lunghezza massima 500 caratteri</p>
                     <p class="dida">Non sono consentiti messaggi con linguaggio offensivo, che contengono turpiloquio, con contenuto razzista o sessista, il cui contenuto violi le leggi italiane.</p>
                 </div>
                 <button type="submit" onclick="postMessage();return false;" data-theme="c">Invia</button>

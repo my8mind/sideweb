@@ -324,27 +324,31 @@ function loadMessages(){
         buildMsgs(JSON.parse(window.localStorage.getItem("msgs")));
 };
 
-function buildMsgs(data,limit){
+function buildMsgs(data,limit,query){
     if(limit == null)
         limit = 100;
     else
         limit = limit + 100;
-    var markup = '<li class="newsItem thread"><a href="radio_1.html?id=${id_messaggio}&rif=${rif_id}">Inviato da ${nome} il <span class="small">${data_inser}</span><br />${oggetto}<br />${testo_msg}</a></li>';
+    if(query == null)
+        query = "";
+    var markup = '<li class="newsItem thread"><a href="radio_1.html?id=${id_messaggio}&rif=${rif_id}">Inviato da ${nome} il <span class="small">${data_inser}</span><br /><span class="big">${oggetto}</span><br />${testo_msg}</a></li>';
     $.template("msgsTemplate",markup);
     var newsList = $("#feeds");
     newsList.empty();
     $.tmpl("msgsTemplate",data).appendTo(newsList);
     newsList.listview("refresh");
     $('#link').empty();
-    $('<li data-icon="forward"><a onclick="remoteLoadMsgs('+limit+');">Mostra messaggi più vecchi</a></li>').appendTo('#link');
+    $('<li data-icon="forward"><a onclick="remoteLoadMsgs('+limit+','+query+');">Mostra messaggi più vecchi</a></li>').appendTo('#link');
     $('#link').listview("refresh");
 };
 
-function remoteLoadMsgs(limit){
+function remoteLoadMsgs(limit,query){
     if(limit == null)
         limit = 100;
-    url = 'http://www.forzearmate.org/app/messages.php?limit='+limit;
-    //url = 'http://giove.hsgroup.net:8080/test/forzearmate/app/messages.php?limit='+limit;
+    if(query == null)
+        query = $('#query').val();
+    url = 'http://www.forzearmate.org/app/messages.php?limit='+limit+'&q='+query;
+    //url = 'http://giove.hsgroup.net:8080/test/forzearmate/app/messages.php?limit='+limit+'&q='+query;
     $.mobile.showPageLoadingMsg();
     jQuery.ajax({
                 type:"GET",
@@ -385,7 +389,7 @@ function loadMessage(id,rif){
         //url = 'http://giove.hsgroup.net:8080/test/forzearmate/app/message.php?id='+id+'&rif='+rif;
         url = 'http://www.forzearmate.org/app/message.php?id='+id+'&rif='+rif;
         
-        var markup = '<li class="newsItem thread">Inviato da ${nome} il <span class="small">${data_inser}</span><br />${oggetto}<br />${testo}</a></li>';
+        var markup = '<li class="newsItem thread">Inviato da ${nome} il <span class="small">${data_inser}</span><br /><span class="big">${oggetto}</span><br />${testo}</a></li>';
         $.template("msgsTemplate",markup);
         jQuery.ajax({
                     type:"GET",
@@ -397,7 +401,7 @@ function loadMessage(id,rif){
                     $.tmpl("msgsTemplate",data).appendTo(newsList);
                     newsList.listview("refresh");
                     $('#reply').empty();
-                    $('<li data-icon="forward"><a href="radio_2.html?ref='+r_id+'&oggetto='+data[0]['oggetto']+'">Rispondi</a></li>').appendTo('#reply');
+                    $('<li data-icon="forward"><a href="radio_2.html?ref='+r_id+'&oggetto='+encodeURIComponent(data[0]['oggetto'])+'">Rispondi</a></li>').appendTo('#reply');
                     $('#reply').listview("refresh");
                     $.mobile.hidePageLoadingMsg();	
                     },
