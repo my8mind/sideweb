@@ -14,7 +14,11 @@
                   $("#ref").val($.getUrlVar('ref'));
                   if($.getUrlVar('ref') > 0){
                         $("#obj").attr("readonly", true);
+<<<<<<< HEAD
                         $("#obj").val(decodeURIComponent($.getUrlVar('oggetto')));
+=======
+                        $("#obj").val(decodeURI($.getUrlVar('oggetto')));
+>>>>>>> 2415d0f49bea3782be16385611181ba79aee7d24
                   }
                   $("textarea[maxlength]").keyup(function(){
                     var max=parseInt($(this).attr('maxlength'));
